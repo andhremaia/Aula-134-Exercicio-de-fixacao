@@ -22,22 +22,30 @@ public class PessoaFisica extends Pessoa {
 	}
 
 	@Override
-	public Double imposto() {
-		
+	public Double imposto() {	
+		//RESOLUÇÃO DO PROFESSOR
 		double imposto = 0.0;
 		
-		if(super.getRendaAnual() <= 20000 && gastosComSaude == 0.0) 
-			imposto = super.getRendaAnual() * 0.15;
-		else 
-			if (super.getRendaAnual() <= 20000 && gastosComSaude > 0.0)
-				imposto = super.getRendaAnual() * 0.15 - gastosComSaude * 0.5;
+		if (getRendaAnual() < 2000)
+			imposto = getRendaAnual() * 0.15;
+		else
+			imposto = getRendaAnual() * 0.25;
+		imposto -= getGastosComSaude() *0.5;
+		if (imposto < 0.0)
+			imposto = 0.0;
 		
-		if(super.getRendaAnual() > 20000 && gastosComSaude == 0.0) 
-			imposto = super.getRendaAnual() * 0.25;
-		else 
-			if (super.getRendaAnual() > 20000 && gastosComSaude > 0.0)
-				imposto = ((super.getRendaAnual() * 0.25) - (gastosComSaude * 0.5));
-			
+		/*
+		 * MINHA RESOLUÇÃO
+		 * if(super.getRendaAnual() <= 20000 && gastosComSaude == 0.0) imposto =
+		 * super.getRendaAnual() * 0.15; else if (super.getRendaAnual() <= 20000 &&
+		 * gastosComSaude > 0.0) imposto = super.getRendaAnual() * 0.15 - gastosComSaude
+		 * * 0.5;
+		 * 
+		 * if(super.getRendaAnual() > 20000 && gastosComSaude == 0.0) imposto =
+		 * super.getRendaAnual() * 0.25; else if (super.getRendaAnual() > 20000 &&
+		 * gastosComSaude > 0.0) imposto = ((super.getRendaAnual() * 0.25) -
+		 * (gastosComSaude * 0.5));
+		 */			
 		return imposto;
 	}
 }
